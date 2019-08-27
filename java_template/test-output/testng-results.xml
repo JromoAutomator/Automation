@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="2" total="3" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="11716" started-at="2019-08-26T17:52:28Z" finished-at="2019-08-26T17:52:40Z">
+    <groups>
+      <group name="CHROME">
+        <method signature="SampleWebTest.SimpleChromeTest2()[pri:1, instance:com.Samples.SampleWebTest@69b2283a]" name="SimpleChromeTest2" class="com.Samples.SampleWebTest"/>
+      </group> <!-- CHROME -->
+      <group name="REGRESSION_TEST">
+        <method signature="SampleWebTest.SimpleChromeTest2()[pri:1, instance:com.Samples.SampleWebTest@69b2283a]" name="SimpleChromeTest2" class="com.Samples.SampleWebTest"/>
+      </group> <!-- REGRESSION_TEST -->
+    </groups>
+    <test name="Default test" duration-ms="11716" started-at="2019-08-26T17:52:28Z" finished-at="2019-08-26T17:52:40Z">
+      <class name="com.Samples.SampleWebTest">
+        <test-method status="PASS" signature="setUpChromeSession()[pri:0, instance:com.Samples.SampleWebTest@69b2283a]" name="setUpChromeSession" is-config="true" duration-ms="5609" started-at="2019-08-26T17:52:28Z" finished-at="2019-08-26T17:52:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpChromeSession -->
+        <test-method status="PASS" signature="setUpSafariSession()[pri:0, instance:com.Samples.SampleWebTest@69b2283a]" name="setUpSafariSession" is-config="true" duration-ms="1" started-at="2019-08-26T17:52:33Z" finished-at="2019-08-26T17:52:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpSafariSession -->
+        <test-method status="PASS" signature="setUpEdgeSession()[pri:0, instance:com.Samples.SampleWebTest@69b2283a]" name="setUpEdgeSession" is-config="true" duration-ms="0" started-at="2019-08-26T17:52:33Z" finished-at="2019-08-26T17:52:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpEdgeSession -->
+        <test-method status="PASS" signature="setUpFireFoxSession()[pri:0, instance:com.Samples.SampleWebTest@69b2283a]" name="setUpFireFoxSession" is-config="true" duration-ms="0" started-at="2019-08-26T17:52:33Z" finished-at="2019-08-26T17:52:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpFireFoxSession -->
+        <test-method status="PASS" signature="setUpIESession()[pri:0, instance:com.Samples.SampleWebTest@69b2283a]" name="setUpIESession" is-config="true" duration-ms="0" started-at="2019-08-26T17:52:33Z" finished-at="2019-08-26T17:52:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpIESession -->
+        <test-method status="PASS" signature="SimpleChromeTest2()[pri:1, instance:com.Samples.SampleWebTest@69b2283a]" name="SimpleChromeTest2" duration-ms="6080" started-at="2019-08-26T17:52:33Z" description="Simple web Test-Chrome" finished-at="2019-08-26T17:52:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- SimpleChromeTest2 -->
+      </class> <!-- com.Samples.SampleWebTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

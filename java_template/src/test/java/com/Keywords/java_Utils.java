@@ -17,26 +17,31 @@ public class java_Utils {
 				browserDriver="webdriver.chrome.driver";
 				this.getOS(browserDriver,"./drivers/chromedriver");
 				driver = new ChromeDriver();
+				driver.manage().window().maximize();
 				break;
 			case FIREFOX:
 				browserDriver="webdriver.gecko.driver";
 				this.getOS(browserDriver,"./drivers/geckodriver");
 				driver = new FirefoxDriver();
+				driver.manage().window().maximize();
 				break;
 			case INTERNET_EXPLORER:
 				browserDriver="webdriver.ie.driver";
 				this.getOS(browserDriver,"./drivers/chromedriver");
 				driver = new InternetExplorerDriver();
+				driver.manage().window().maximize();
 				break;
 			case EDGE:
 				browserDriver="webdriver.edge.driver";
 				this.getOS(browserDriver,"./drivers/chromedriver");
 				driver = new EdgeDriver();
+				driver.manage().window().maximize();
 				break;
 			case SAFARI:
 				browserDriver="webdriver.edge.driver";
 				this.getOS(browserDriver,"./drivers/chromedriver");
 				driver = new SafariDriver();
+				driver.manage().window().maximize();
 				break;
 			default:
 				break;
@@ -47,13 +52,14 @@ public class java_Utils {
 		return driver;
 	}
 	
-	private void getOS(String browserDriver,String driverpath) {		
-		switch(System.getProperty("os.name")) {
+	private void getOS(String browserDriver,String driverpath) {	
+		String strOS=System.getProperty("os.name");
+		switch(strOS) {
 			case "Linux":
 				System.setProperty(browserDriver, driverpath);
 				System.out.println("Running on Linux..");
 				break;
-			case "Mac OS":
+			case "Mac OS X":
 				System.out.println("Running on Mac..");
 				break;
 			default:
