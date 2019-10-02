@@ -1,4 +1,4 @@
-package POM;
+package POM.Calculator;
 
 import com.smartbear.testleft.testobjects.Control;
 import com.smartbear.testleft.testobjects.ProcessPattern;

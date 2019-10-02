@@ -1,5 +1,6 @@
 package com.storable.framework;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -16,6 +17,10 @@ public abstract class webElements_Keywords implements webObjects{
 	public void textBox_EnterText(WebElement seleniumElement,String strText) {
 		seleniumElement.click();
 		seleniumElement.clear();
+		seleniumElement.sendKeys(strText);
+	}
+	
+	public void TestBox_SendKeyBoardKeys(WebElement seleniumElement,Keys strText) {
 		seleniumElement.sendKeys(strText);
 	}
 	

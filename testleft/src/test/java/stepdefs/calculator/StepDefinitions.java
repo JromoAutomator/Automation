@@ -1,7 +1,7 @@
-package stepdefs;
+package stepdefs.calculator;
 
 
-import POM.CalculatorApp;
+import POM.Calculator.CalculatorApp;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

@@ -1,5 +1,6 @@
 package com.storable.framework;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -9,6 +10,7 @@ public interface webObjects {
 
     //TextBox
     public void textBox_EnterText(WebElement seleniumElement,String strText);
+    public void TestBox_SendKeyBoardKeys(WebElement seleniumElement,Keys strText);
 
     //Object Common
     public boolean element_isVisible(WebElement seleniumElement);
