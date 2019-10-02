@@ -27,10 +27,6 @@ public class CalculatorApp extends desktopElements_keywords {
 	private Control numericKeyboard = getNumericKeyboard();
 	private Control standardOperations = getStandarOperation();
 	
-	public Control button5 = get_button5();
-	public Control button7 = get_button7();
-	public Control buttonSum =get_buttonSum();
-	public Control buttonEqual =get_buttonEqual();
 	
 	public void CloseApp() {
 		try {
@@ -39,60 +35,60 @@ public class CalculatorApp extends desktopElements_keywords {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	private Control get_button5 () {		
+	public Control CreateNumericButton(String strObjectIdentifier) {
+		final String strOI=strObjectIdentifier;
 		Control Button=null;
 		try {
 			Button = numericKeyboard.find(Control.class, new UIAPattern(){{ 
 			FrameworkId = "XAML"; 
 			ClassName = "Button"; 
 			LocalizedControlType = "botón"; 
-			ObjectIdentifier = "Cinco";}});
+			ObjectIdentifier = strOI;}});
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return Button;
 	}
-	private Control get_button7 () {
-		Control Button=null;
-		try {
-			Button = numericKeyboard.find(Control.class, new UIAPattern(){{ 
-			FrameworkId = "XAML"; 
-			ClassName = "Button"; 
-			LocalizedControlType = "botón"; 
-			ObjectIdentifier = "Siete";}});
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return Button;
-	}
-	private Control get_buttonSum () {
+	public Control CreateOperationButton(String strObjectIdentifier) {
+		final String strOI=strObjectIdentifier;
 		Control Button=null;
 		try {
 			Button = standardOperations.find(Control.class, new UIAPattern(){{ 
 			FrameworkId = "XAML"; 
 			ClassName = "Button"; 
 			LocalizedControlType = "botón"; 
-			ObjectIdentifier = "Más";}});
+			ObjectIdentifier = strOI;}});
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return Button;
-		}
-	private Control get_buttonEqual () {
-		Control Button=null;
+	}
+	public Control GetTextBoxArea() {
+		Control Container = getLandTarget();
+		Control textBlock=null;
 		try {
-			Button = standardOperations.find(Control.class, new UIAPattern(){{ 
-			FrameworkId = "XAML"; 
-			ClassName = "Button"; 
-			LocalizedControlType = "botón"; 
-			ObjectIdentifier = "Es_igual_a";}});
+			textBlock = Container.find(Control.class, new UIAPattern(){{ 
+				FrameworkId = "XAML"; 
+				ClassName = null; 
+				LocalizedControlType = "texto"; 
+			}}).find(Control.class, new UIAPattern(){{ 
+				FrameworkId = "XAML"; 
+				ClassName = "ScrollViewer"; 
+				LocalizedControlType = "panel"; 
+				ObjectIdentifier = "TextContainer"; 
+			}}).find(Control.class, new UIAPattern(){{ 
+				FrameworkId = "XAML"; 
+				ClassName = "TextBlock"; 
+				LocalizedControlType = "texto"; 
+				ObjectIdentifier = "NormalOutput"; 
+			}});
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return Button;
-		}
+		return textBlock;
+	}
+	
+	
 	
 	
 	private TopLevelWindow getparentObject() {
@@ -158,7 +154,16 @@ public class CalculatorApp extends desktopElements_keywords {
 		}
 		return StandarOperation;
 	}
+	
+
 }	
+
+
+
+
+
+
+
 
 
 

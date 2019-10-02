@@ -2,6 +2,8 @@
 #Keywords Summary :
 #Feature: List of scenarios.
 #Scenario: Business rule through list of steps with arguments.
+#Operations (Más,Menos,Dividido_por,Multiplicar_por,Es_igual_a)
+#Numbers (Uno, Dos, Tres, Cuatro, Cinco
 
 @tag
 Feature: using calculator for basic operations
@@ -12,11 +14,13 @@ Feature: using calculator for basic operations
   @SmokeTest
   Scenario: Sum
     Given the windows calculator app
-    When I click on number 5
-    And click on SUM button
-    And click on number 7
-    And click on = button
-    Then the value on the calculator shows 12
+    When click on Numeric button Uno
+    And click on Operation button Menos
+    And click on Numeric button Siete
+    And click on Operation button Es_igual_a
+    Then print the result on the calculator
+    Then I open application in Chrome browser
+
 
 
   
