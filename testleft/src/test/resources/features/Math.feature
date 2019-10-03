@@ -12,14 +12,33 @@ Feature: using calculator for basic operations
   using the windows calculator app
 
   @SmokeTest
-  Scenario: Sum
+  Scenario: Math Operators
     Given the windows calculator app
     When click on Numeric button Uno
     And click on Operation button Menos
     And click on Numeric button Siete
     And click on Operation button Es_igual_a
     Then print the result on the calculator
-    Then I open application in Chrome browser
+ 
+    
+ 	@Outline
+  Scenario Outline: Multuple Operators
+  	Given the windows calculator app
+    When click on Numeric button <number1>
+    And click on Operation button <operator>
+    And click on Numeric button <number2>
+    And click on Operation button Es_igual_a
+    Then print the result on the calculator
+    Then Close the APP
+
+    Examples: 
+      | number1  | operator           | number2  |
+      | Cinco    |   Más              | Tres     |
+      | Siete    |   Menos            | Dos      |
+      | Ocho     |   Dividido_por     | Cuatro   |
+      | Uno      |   Multiplicar_por  | Nueve    |
+    
+
 
 
 

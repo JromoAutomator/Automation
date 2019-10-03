@@ -11,12 +11,14 @@ import com.smartbear.testleft.*;
 
 public class CalculatorApp extends desktopElements_keywords {
 	TestProcess process=null;
+	Process calc;
 
 	private Driver initDriver() {
 		Driver desdriver=null;
 		try {
 			desdriver=new LocalDriver();
-			process = desdriver.getApplications().run("C:\\Windows\\System32\\calc.exe");
+			//process = desdriver.getApplications().run("C:\\Windows\\System32\\calc.exe");
+			calc = new ProcessBuilder("C:\\Windows\\System32\\calc.exe").start();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -30,7 +32,7 @@ public class CalculatorApp extends desktopElements_keywords {
 	
 	public void CloseApp() {
 		try {
-			process.close();
+			calc.destroy();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

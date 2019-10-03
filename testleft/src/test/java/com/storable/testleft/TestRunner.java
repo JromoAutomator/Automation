@@ -13,7 +13,7 @@ import org.testng.annotations.AfterClass;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"stepdefs"},
-        tags = {"@SmokeTest"})
+        tags = {"@Outline"})
 
 public class TestRunner {
 	private TestNGCucumberRunner testNGCucumberRunner;

@@ -17,7 +17,7 @@ public class StepDefinitions {
   @Given("^the windows calculator app$")
   public void given() throws Throwable {
 	  this.Calculator = new CalculatorApp();
-	  Thread.sleep(2000);
+	  Thread.sleep(4000);
   }
 
   @When("^click on Numeric button (.*)$")
