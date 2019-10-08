@@ -29,7 +29,7 @@ Feature: using calculator for basic operations
     And click on Numeric button <number2>
     And click on Operation button Es_igual_a
     Then print the result on the calculator
-    Then Close the APP
+
 
     Examples: 
       | number1  | operator           | number2  |

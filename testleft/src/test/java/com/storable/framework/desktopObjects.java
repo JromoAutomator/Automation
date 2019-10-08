@@ -9,12 +9,13 @@ public interface desktopObjects {
    // public void button_Click(TextEdit editApp);
 
     //TextBox
-    //public void textBox_EnterText(TextEdit editApp,String strText);
+    public void textBox_EnterText(TextEdit editApp,String strText);
+    public String element_Getlabel(TextEdit editApp);
 
     //Object Common
    // public boolean element_isVisible(TextEdit editApp);
    // public boolean element_isEnabled(TextEdit editApp);
-    public String element_Getlabel(TextEdit editApp) ;
+    
   
 //Calculator App
     //Buttons
@@ -29,6 +30,5 @@ public interface desktopObjects {
     public String element_Getlabel(Control windowObject) ;
 	
 }
-
 
 
