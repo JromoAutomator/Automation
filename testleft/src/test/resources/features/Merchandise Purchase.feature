@@ -17,9 +17,29 @@
 ## (Comments)
 #Sample Feature Definition Template
 @tag
-Feature: Title of your feature
-  I want to use this template for my feature file
-
-  @tag1
-  Scenario:  Walk-in POS Setup
+Feature: Merchandise Purchase
+  
+Scenario:  Walk-in POS Purchase of Merchandise
     Given SLWE is running and logged in as a valid user with sufficient privileges
+    And the Operations screen is visible
+    When I click Merchandise Purchase
+    Then the Add Merchandise screen is visible
+    And I click add to cart->OK
+    And finish with cash payment
+    
+    Scenario:  Walk-in POS Purchase with discount
+    Given SLWE is running and logged in as a valid user with sufficient privileges
+    And the Operations screen is visible
+    When I click the Merchandise Purchase button
+    Then the Add Merchandise screen is visible
+    And I click add to cart->OK
+    And Set discount percent to 5% and apply using the checkbox
+    And finish with cash payment
+
+ Scenario:  Walk-in POS Setup
+    Given SLWE is running and logged in as a valid user with sufficient privileges
+    And the Operations screen is visible
+    When I click Setup
+
+ 
+  
