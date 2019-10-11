@@ -21,6 +21,7 @@ public abstract class desktopElements_keywords implements desktopObjects{
 	//Button
 	public void button_Click(Control windowObject) {
 		try {
+			while(!windowObject.getVisible()) {Thread.sleep(100);}
 			windowObject.click();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -29,6 +30,7 @@ public abstract class desktopElements_keywords implements desktopObjects{
 	
 	public void button_Click(Button windowObject) {
 		try {
+			while(!windowObject.getVisible()) {Thread.sleep(100);}
 			windowObject.click();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -37,6 +39,7 @@ public abstract class desktopElements_keywords implements desktopObjects{
 	
 	public void button_Click(Control windowObject,int x, int y) {
 		try {
+			while(!windowObject.getVisible()) {Thread.sleep(100);}
 			windowObject.click(x,y);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -46,6 +49,7 @@ public abstract class desktopElements_keywords implements desktopObjects{
 	public String element_Getlabel(Control windowObject) {
 		String strValue=null;
 		try {
+			while(!windowObject.getVisible()) {Thread.sleep(100);}
 			strValue = windowObject.getProperty(String.class, "Text");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,6 +62,7 @@ public abstract class desktopElements_keywords implements desktopObjects{
 	public String element_Getlabel(TextEdit editApp) {
 		String strValue=null;
 		try {
+			while(!editApp.getVisible()) {Thread.sleep(100);}
 			strValue = editApp.getProperty(String.class, "Text");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,6 +72,7 @@ public abstract class desktopElements_keywords implements desktopObjects{
 	
 	public void textBox_EnterText(TextEdit editApp, String strText) {
 		try {
+			while(!editApp.getVisible()) {Thread.sleep(100);}
 			editApp.click();
 			editApp.callMethod("Clear");
 			editApp.setText(strText);
@@ -150,6 +156,7 @@ public abstract class desktopElements_keywords implements desktopObjects{
 	
 	public void Combobox_SelectItem(ComboBox objComboBox , int index) {
 		try {
+			while(!objComboBox.getVisible()) {Thread.sleep(100);}
 			objComboBox.clickItem(index);
 		}catch(Exception e) {
 			e.printStackTrace();

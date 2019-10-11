@@ -30,6 +30,7 @@ public class StepDefinitions {
 	
   @Given("^SLWE is running and logged in as a valid user with sufficient privileges$")
   public void LaunchSLWE() throws Throwable {
+	  System.out.println("@Given SLWE is running and logged in as a valid user with sufficient privileges");
 	  if(!screenisvisible("Operations")) {
 		  screenisvisible("Login");
 		  WinLoginForm.textBox_EnterText(WinLoginForm.$txtCorpCode(), "SLQA");
@@ -47,6 +48,7 @@ public class StepDefinitions {
 
   @When("^I click (.*)$")
   public void Buttonclick(String strButtonPath) throws Throwable {
+	  System.out.println("@When I click"+strButtonPath);
 	  String[] List = strButtonPath.split("->");
 	  for (String Option : List) {
 		  if(CurrentScreen.OCRButton(Option, ButtonCoor)) {
@@ -61,6 +63,7 @@ public class StepDefinitions {
 
   @And("^finish with cash payment$")
   public void FinishCash() throws Throwable {
+	  System.out.println("@And finish with cash payment");
 	  screenisvisible("Payment");
 	  WinPayment.Combobox_SelectItem(WinPayment.$cbPaymentMethod(), 3);
 	  WinPayment.button_Click(WinPayment.$btnOK());
@@ -73,6 +76,7 @@ public class StepDefinitions {
 
   @And("^the (.*) screen is visible$")
   public boolean screenisvisible(String strScreen) throws Throwable {
+	  System.out.println("@And the "+strScreen+" screen is visible");
 	  SetUpScreen(strScreen);
 	  boolean blnvisible=false;
 	  CurrentScreen = (desktopElements_keywords) ScreenInventory.ClassScreenName.get(strScreen);
@@ -82,7 +86,7 @@ public class StepDefinitions {
 		  CurrentScreen.setCommonObjects(ScreenInventory);
 	  }catch(Exception e) {}
 	  if(ScreenInventory.ScreenExist(ScreenInventory.getWindowByName(strScreen,ScreenInventory.ScreenName))) {
-		  System.out.println(strScreen +" screen exists");
+		  //System.out.println(strScreen +" screen exists");
 		  blnvisible = true;
 	  }
 	  return blnvisible;
@@ -91,6 +95,7 @@ public class StepDefinitions {
   
   @And("^Set discount percent to (.*)% and apply using the checkbox$")
   public void applydiscount(String strdiscount) {
+	  System.out.println("@And Set discount percent to "+strdiscount+"% and apply using the checkbox");
 	  WinAddMerchandise.textBox_EnterText(WinAddMerchandise.$updownnarrow(), strdiscount);
 	  WinAddMerchandise.button_Click(WinAddMerchandise.$chkDiscountPct());
   }

@@ -4,8 +4,25 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.chrome.*;
+import java.util.concurrent.*;;
 
 public abstract class webElements_Keywords implements webObjects{
+	private WebDriver intDriver;
+	
+	//Driver
+	public WebDriver InitDriver(String strChromeDriverPath,String url){
+		System.setProperty("webdriver.chrome.driver",strChromeDriverPath );
+		WebDriver chromeDriver = new ChromeDriver();
+		chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		chromeDriver.manage().window().maximize();
+		chromeDriver.get(url);
+		return chromeDriver;
+	}
+	
+	public WebDriver GetDriver() {
+		return this.intDriver;
+	}
 	
 	
 	//Button
