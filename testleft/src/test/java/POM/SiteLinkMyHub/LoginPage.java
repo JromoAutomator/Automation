@@ -10,7 +10,7 @@ import com.storable.framework.webElements_Keywords;
 
 public class LoginPage extends webElements_Keywords{
 
-	private WebDriver intWebDriver;
+	public WebDriver CommonDriver;
 	
 	@FindBy(id="Client_CorpCode")
     public WebElement txtClient_CorpCode;
@@ -29,16 +29,8 @@ public class LoginPage extends webElements_Keywords{
 	
 	
 	
-	public LoginPage(int intTimeOut) {
-		PageFactory.initElements(new AjaxElementLocatorFactory(this.GetDriver(),intTimeOut), this);
-	}
-	
-	public LoginPage() {
-		PageFactory.initElements(new AjaxElementLocatorFactory(this.GetDriver(),100), this);
-	}
-	
-	public LoginPage(String strChromeDriverPath,String strurl) {
-		intWebDriver=this.InitDriver(strChromeDriverPath,strurl);
+
+	public LoginPage(WebDriver intWebDriver) {
 		PageFactory.initElements(new AjaxElementLocatorFactory(intWebDriver,100), this);
 	}
 	

@@ -5,9 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public interface webObjects {
-	//Dirver
-	public WebDriver InitDriver(String strChromeDriverPat,String strURL);
-	public WebDriver GetDriver();
+
     //Buttons
     public void button_Click(WebElement seleniumElement);
 
