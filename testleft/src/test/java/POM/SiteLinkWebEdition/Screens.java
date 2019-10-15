@@ -23,7 +23,6 @@ public class Screens extends desktopElements_keywords{
 		Maps.put("Operations", Operations_ButtonName);
 		Maps.put("Add Merchandise", AddMerchandise_ButtonName);
 		Maps.put("Payment", Payment_ButtonName);
-		
 		MapsCoor.put("Operations", Operations_ButtonCoor);
 	}
 }

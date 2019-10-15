@@ -13,21 +13,20 @@ import com.jayway.jsonpath.JsonPath;
 
 public class HipTest {
 
-	private String hipTestProjectId = "145571";
-	private String hipTestRunID = "309625";
+
 	private String hipTestSnapshotID = "";
 	public String hipTestCaseID = "";
 	private String hipTestCaseName = "";
-	private String hipTestBaseURL = "https://app.hiptest.com/api/";
-	private String accessToken="gjDXFQ3-swMzDTq72fZZqQ";
-	private String UUID="jesus.romo@itexico.com";
-	private String client="XV5dIyaBFZI4X5HWv4iSEg";
+	projectProperties projectProp;
 	
 
+	public HipTest() {
+		projectProp = new projectProperties();
+	}
 	
 	public void addHipTestCaseToRun() {
-		String url = hipTestBaseURL + "projects/" + hipTestProjectId + "/test_runs/" + hipTestRunID;
-		String body = "{\"data\": {\"type\": \"test_runs\", \"id\": " + hipTestRunID
+		String url = projectProp.hipTestBaseURL + "projects/" + projectProp.hipTestProjectId+ "/test_runs/" + projectProp.hipTestRunID;
+		String body = "{\"data\": {\"type\": \"test_runs\", \"id\": " + projectProp.hipTestRunID
 				+ ", \"attributes\": {\"scenario_id\": " + hipTestCaseID + "}}}";
 
 		String response = postCall(url, body, "PATCH");
@@ -49,9 +48,9 @@ public class HipTest {
 			//add request header
 			con.setRequestProperty("Content-Type", "application/json; utf-8");
 			con.setRequestProperty("Accept", "application/vnd.api+json; version=1");
-			con.setRequestProperty("access-token", accessToken);
-			con.setRequestProperty("uid", UUID);
-			con.setRequestProperty("client", client);
+			con.setRequestProperty("access-token", projectProp.HipTestToken);
+			con.setRequestProperty("uid", projectProp.hipTestUser);
+			con.setRequestProperty("client", projectProp.hipTestClient);
 			con.setDoOutput(true);
 	
 			String jsonInputString = body;
@@ -90,7 +89,7 @@ public class HipTest {
 
 	private void getHipTestCaseName(){
 		try{	
-			String url = hipTestBaseURL + "projects/" + hipTestProjectId + "/scenarios/" + hipTestCaseID;		
+			String url = projectProp.hipTestBaseURL + "projects/" + projectProp.hipTestProjectId + "/scenarios/" + hipTestCaseID;		
 			String response = getCall(url);
 			
 			hipTestCaseName = parseJSON(response.toString(), "$.data.attributes.name");
@@ -103,7 +102,7 @@ public class HipTest {
 		try{
 			getHipTestCaseName();
 			Thread.sleep(5000);
-			String url = hipTestBaseURL + "projects/" + hipTestProjectId + "/test_runs/" + hipTestRunID  + "/test_snapshots";
+			String url = projectProp.hipTestBaseURL + "projects/" + projectProp.hipTestProjectId + "/test_runs/" + projectProp.hipTestRunID  + "/test_snapshots";
 			String response = getCall(url);
 		
 			hipTestSnapshotID = parseJSON(response.toString(), "$.data[*][?(@.attributes.name == '" + hipTestCaseName + "')].id");
@@ -119,7 +118,7 @@ public class HipTest {
 		//	hipTestCaseStatus = "failed";
 		//}
 		
-		String url = hipTestBaseURL + "projects/" + hipTestProjectId + "/test_runs/" + hipTestRunID + "/test_snapshots/"
+		String url = projectProp.hipTestBaseURL + "projects/" + projectProp.hipTestProjectId + "/test_runs/" + projectProp.hipTestRunID + "/test_snapshots/"
 				+ hipTestSnapshotID + "/test_results";
 		String body = "{\"data\": {\"type\": \"test-results\", \"attributes\": {\"status\": \"" + hipTestCaseStatus + "\", \"status-author\": \"Cucumber\", \"description\": \""
 				+ testCaseMessage + "\"}}}";
@@ -141,9 +140,9 @@ public class HipTest {
 	
 			//add request header
 			con.setRequestProperty("Accept", "application/vnd.api+json; version=1");
-			con.setRequestProperty("access-token", accessToken);
-			con.setRequestProperty("uid", UUID);
-			con.setRequestProperty("client", client);
+			con.setRequestProperty("access-token", projectProp.HipTestToken);
+			con.setRequestProperty("uid", projectProp.hipTestUser);
+			con.setRequestProperty("client", projectProp.hipTestClient);
 	
 			BufferedReader in = new BufferedReader(
 			        new InputStreamReader(con.getInputStream()));

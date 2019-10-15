@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.storable.framework.webElements_Keywords;
 
@@ -16,24 +17,45 @@ public class TestContext extends webElements_Keywords{
 	public HipTest hipTest= new HipTest();
 	public LoginPage SiteLinkMyHub_LoginPage;
 	public HomePage SiteLinkMyHub_HomePage;
+	public projectProperties projectProp;
+	
 	
 	public TestContext(){
-		System.out.println("");
+		projectProp = new projectProperties();
 	}
 	
 	//Driver
 	public WebDriver InitDriver(){
-		System.setProperty("webdriver.chrome.driver","C:/Drivers/chromedriver.exe" );
-		WebDriver chromeDriver = new ChromeDriver();
-		chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		chromeDriver.manage().window().maximize();
-		chromeDriver.get("https://myhubstaging.smdservers.net/Account/Login");
-		this.intDriver=chromeDriver;
+		System.setProperty(projectProp.setProperty,projectProp.driverPath);
+		intDriver = getBrowserDriver();
+		intDriver.get(projectProp.myHubURL);
+
+		SiteLinkMyHub_LoginPage = new LoginPage(intDriver);
+		SiteLinkMyHub_HomePage = new HomePage(intDriver);
 		
-		SiteLinkMyHub_LoginPage = new LoginPage(chromeDriver);
-		SiteLinkMyHub_HomePage = new HomePage(chromeDriver);
+		return intDriver;
+	}
+	
+	public WebDriver getBrowserDriver() {
+		WebDriver bDriver;
+		switch(projectProp.browser) {
+		case "Chrome":
+			bDriver = new ChromeDriver();
+			bDriver.manage().timeouts().implicitlyWait(projectProp.driverTimeout, TimeUnit.SECONDS);
+			bDriver.manage().window().maximize();
+			break;
+		case "FireFox":
+			bDriver = new FirefoxDriver();
+			bDriver.manage().timeouts().implicitlyWait(projectProp.driverTimeout, TimeUnit.SECONDS);
+			bDriver.manage().window().maximize();
+			break;
+		default:
+			bDriver = new ChromeDriver();
+			bDriver.manage().timeouts().implicitlyWait(projectProp.driverTimeout, TimeUnit.SECONDS);
+			bDriver.manage().window().maximize();
+		}
 		
-		return chromeDriver;
+		return bDriver;
 	}
 	
 	public WebDriver GetDriver() {
