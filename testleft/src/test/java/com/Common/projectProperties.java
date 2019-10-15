@@ -10,7 +10,7 @@ public class projectProperties {
 	String browser;
 	String chromedriverPath;
 	String dbCon;
-	String propFileName = "src/test/resources/config/config.properties";
+	String propFileName;
 	String hipTestBaseURL;
 	String hipTestRunID;
 	String HipTestToken;
@@ -28,6 +28,7 @@ public class projectProperties {
 	
 	public projectProperties() {
 		Properties prop = new Properties();
+		propFileName = System.getProperty("propertyName");
 		
 		try {
 			InputStream inputStream = new FileInputStream(propFileName);
