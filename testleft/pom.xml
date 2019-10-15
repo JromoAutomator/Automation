@@ -117,7 +117,7 @@
         <version>2.22.0</version>
         <configuration>
           <systemPropertyVariables>
-            <propertyName>C:/_/testleft/src/test/resources/config/config.properties</propertyName>
+            <system.config.file>C:/_/testleft/src/test/resources/config/config.properties</system.config.file>
             <buildDirectory>${project.build.directory}</buildDirectory>
             [...]
           </systemPropertyVariables>

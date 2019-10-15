@@ -28,7 +28,9 @@ public class projectProperties {
 	
 	public projectProperties() {
 		Properties prop = new Properties();
-		propFileName = System.getProperty("propertyName");
+		propFileName = System.getProperty("system.config.file");
+		System.out.println(propFileName);
+		//mvn -Dsystem.config.file=C:/_/config_Files/config.properties test
 		
 		try {
 			InputStream inputStream = new FileInputStream(propFileName);
