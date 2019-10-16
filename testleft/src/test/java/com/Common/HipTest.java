@@ -15,7 +15,7 @@ public class HipTest {
 
 
 	private String hipTestSnapshotID = "";
-	public String hipTestCaseID = "";
+	public String sthipTestCaseID = "";
 	private String hipTestCaseName = "";
 	projectProperties projectProp;
 	
@@ -24,7 +24,8 @@ public class HipTest {
 		projectProp = new projectProperties();
 	}
 	
-	public void addHipTestCaseToRun() {
+	public void addHipTestCaseToRun(String hipTestCaseID) {
+		this.sthipTestCaseID=hipTestCaseID;
 		String url = projectProp.hipTestBaseURL + "projects/" + projectProp.hipTestProjectId+ "/test_runs/" + projectProp.hipTestRunID;
 		String body = "{\"data\": {\"type\": \"test_runs\", \"id\": " + projectProp.hipTestRunID
 				+ ", \"attributes\": {\"scenario_id\": " + hipTestCaseID + "}}}";
@@ -89,7 +90,7 @@ public class HipTest {
 
 	private void getHipTestCaseName(){
 		try{	
-			String url = projectProp.hipTestBaseURL + "projects/" + projectProp.hipTestProjectId + "/scenarios/" + hipTestCaseID;		
+			String url = projectProp.hipTestBaseURL + "projects/" + projectProp.hipTestProjectId + "/scenarios/" + sthipTestCaseID;		
 			String response = getCall(url);
 			
 			hipTestCaseName = parseJSON(response.toString(), "$.data.attributes.name");

@@ -13,7 +13,7 @@ import org.testng.annotations.AfterClass;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = {"stepdefs"},
+        glue = {"stepdefs","com.Common"},
         //tags = {"~@ignore"}
         tags = {"@Web"}
         )

@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import cucumber.api.Scenario;
+import cucumber.api.java.Before;
+
 public class projectProperties {
 	String myHubURL;
 	String browser;
@@ -24,13 +27,16 @@ public class projectProperties {
 	int driverTimeout;
 	String driverPath;
 	String setProperty;
-	
+
+	String hipTestCaseID;
+
 	
 	public projectProperties() {
 		Properties prop = new Properties();
 		propFileName = System.getProperty("system.config.file");
-		System.out.println(propFileName);
-		//mvn -Dsystem.config.file=C:/_/config_Files/config.properties test
+		//uncomment to run as a cucumber feature file
+		//propFileName="C:/_/testleft/src/test/resources/config/config.properties";
+		//mvn -Dsystem.config.file=file.properties test
 		
 		try {
 			InputStream inputStream = new FileInputStream(propFileName);
@@ -62,6 +68,7 @@ public class projectProperties {
 			getBrowser(browser);
 			driverTimeout=Integer.parseInt(prop.getProperty("driverTimeout"));
 			
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -84,6 +91,27 @@ public class projectProperties {
 		}
 		
 		
+	}
+	
+	public void setProp(String Key, String Value) {
+		Properties prop = new Properties();
+		propFileName = System.getProperty("system.config.file");
+		//uncomment to run as a cucumber feature file
+		//propFileName="C:/_/testleft/src/test/resources/config/config.properties";
+
+		
+		try {
+			InputStream inputStream = new FileInputStream(propFileName);
+			if (inputStream != null) {
+				prop.load(inputStream);
+			} else {
+				throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		prop.setProperty(Key, Value);
 	}
 
 }

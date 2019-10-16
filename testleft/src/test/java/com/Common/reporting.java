@@ -4,8 +4,8 @@ public class reporting {
 
 	public void executionReport(String status, String message) {
 		
-		/*
-		if (!status.toLowerCase().equals("failed")) {
+		
+		/*if (!status.toLowerCase().equals("failed")) {
 			if (logLevel.toLowerCase().equals("all")) {
 				// testCaseMessage += "\n||" + status + "|" + message;
 				testCaseMessage += scenarioName + ":" + status + " - " + message + "\n";

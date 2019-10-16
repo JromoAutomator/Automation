@@ -21,15 +21,14 @@ Feature: Login
   Verify tenants can be added, read, updated and deleted
   
   
-@Web
+@Web @HTC-3668454 @RegressionTest
   Scenario: Login 2
-	Given HipTestCaseID is "3668454"
 	Given user is on sitelink login page
 	When user enters login info and presses submit
 	Then success message is displayed
-@Web
+	
+@Web @HTC-3668455 @SmokeTest
 Scenario: Login 3
-	Given HipTestCaseID is "3668455"
 	Given user is on sitelink login page
 	When user enters login info and presses submit
 	Then success message is displayed
