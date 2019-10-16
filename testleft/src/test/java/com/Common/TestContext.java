@@ -28,7 +28,7 @@ public class TestContext extends webElements_Keywords{
 	    this.scenario = scenario;
 	    hipTest.sthipTestCaseID=getHipTestCaseID();
 	    hipTest.addHipTestCaseToRun(hipTest.sthipTestCaseID);
-	    System.out.println("***********Thread 1 running tets case id = "+ hipTest.sthipTestCaseID+ " *********************");
+	    System.out.println("***********Thread "+Thread.currentThread().getId()+" running tets case id = "+ hipTest.sthipTestCaseID+ " *********************");
 	}
 	
 	public TestContext(){
