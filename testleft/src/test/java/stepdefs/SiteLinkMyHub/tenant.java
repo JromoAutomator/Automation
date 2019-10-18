@@ -5,6 +5,7 @@ import com.Common.TestContext;
 import POM.SiteLinkMyHub.HomePage;
 import POM.SiteLinkMyHub.LoginPage;
 import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,6 +16,10 @@ public class tenant{
 	LoginPage SiteLinkMyHub_LoginPage;
 	HomePage SiteLinkMyHub_HomePage;
 
+	@After
+	public void after() {
+		if(!ObjCommon.hipTest.blnhipTestlog) {hipTest.addResultToHipTest();}
+	}
 
 	 public tenant(TestContext context) {
 		 ObjCommon = context;
@@ -30,8 +35,16 @@ public class tenant{
 	
 	@Then("^success message is displayed$")
 	  public void then() throws Throwable {
-		  SiteLinkMyHub_HomePage.element_isVisible(SiteLinkMyHub_HomePage.lblOperations);
-		  hipTest.addResultToHipTest("passed", "Running from Cucumber Parallel");
+		//Uncomment for Option 1
+		//if(SiteLinkMyHub_HomePage.lblOperations_isVisible()) {
+		if(SiteLinkMyHub_HomePage.element_isVisible(SiteLinkMyHub_HomePage.lblOperations)){
+			ObjCommon.Report2.executionReport("passed", "HomePage : welcome screen is displayed");
+		}else {
+			ObjCommon.Report2.executionReport("failed", "HomePage : something went wrong with login steps");
+		}
+		
+		SiteLinkMyHub_HomePage.element_isVisible(SiteLinkMyHub_HomePage.lblOperations);
+		  
 	  }
 	
 	public void updatePFObjects() {

@@ -17,10 +17,20 @@ public class HipTest {
 	private String hipTestSnapshotID = "";
 	public String sthipTestCaseID = "";
 	private String hipTestCaseName = "";
+	private String hipTestCaseStatus="passed";
 	projectProperties projectProp;
-	
+	public reporting internalReport;
+	public boolean blnhipTestlog=false;
 
+	public HipTest(reporting outReport) {
+		//Uncomment for Option 1
+		//this.internalReport=outReport;
+		projectProp = new projectProperties();
+	}
+	
 	public HipTest() {
+		//Uncomment for Option 1
+		//this.internalReport=outReport;
 		projectProp = new projectProperties();
 	}
 	
@@ -113,16 +123,17 @@ public class HipTest {
 		}
 	}
 
-	public void addResultToHipTest(String hipTestCaseStatus, String testCaseMessage){
+	public void addResultToHipTest(){
+		blnhipTestlog=true;
 		getHipTestSnapshotIDFromName();
-		//if (testCaseStatus == 5){
-		//	hipTestCaseStatus = "failed";
-		//}
+		if (internalReport.testCaseStatus == 5){
+			hipTestCaseStatus = "failed";
+		} 
 		
 		String url = projectProp.hipTestBaseURL + "projects/" + projectProp.hipTestProjectId + "/test_runs/" + projectProp.hipTestRunID + "/test_snapshots/"
 				+ hipTestSnapshotID + "/test_results";
 		String body = "{\"data\": {\"type\": \"test-results\", \"attributes\": {\"status\": \"" + hipTestCaseStatus + "\", \"status-author\": \"Cucumber\", \"description\": \""
-				+ testCaseMessage + "\"}}}";
+				+ internalReport.testCaseMessage + "\"}}}";
 		postCall(url, body);
 
 	}

@@ -22,13 +22,13 @@ Feature: Login
   
   
 @Web @HTC-3668454 @RegressionTest
-  Scenario: Login 2
+  Scenario: Login 3
 	Given user is on sitelink login page
 	When user enters login info and presses submit
 	Then success message is displayed
 	
 @Web @HTC-3668455 @SmokeTest
-Scenario: Login 3
+Scenario: Login 4
 	Given user is on sitelink login page
 	When user enters login info and presses submit
 	Then success message is displayed

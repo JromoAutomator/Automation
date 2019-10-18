@@ -21,13 +21,13 @@ Feature: Login
   Verify tenants can be added, read, updated and deleted
   
 @Web @HTC-3667500 @SmokeTest
-  Scenario: Login 2
+  Scenario: Login
 	Given user is on sitelink login page
 	When user enters login info and presses submit
 	Then success message is displayed
 	
 @Web @HTC-3667761 @SmokeTest
-Scenario: Login 3
+Scenario: Login 2
 	Given user is on sitelink login page
 	When user enters login info and presses submit
 	Then success message is displayed

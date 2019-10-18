@@ -9,7 +9,7 @@ import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 
 public class projectProperties {
-	String myHubURL;
+	public String myHubURL;
 	String browser;
 	String chromedriverPath;
 	String dbCon;
@@ -35,7 +35,7 @@ public class projectProperties {
 		Properties prop = new Properties();
 		propFileName = System.getProperty("system.config.file");
 		//uncomment to run as a cucumber feature file
-		//propFileName="C:/_/testleft/src/test/resources/config/config.properties";
+		propFileName="C:/_/testleft/src/test/resources/config/config.properties";
 		//mvn -Dsystem.config.file=file.properties test
 		
 		try {
@@ -97,7 +97,7 @@ public class projectProperties {
 		Properties prop = new Properties();
 		propFileName = System.getProperty("system.config.file");
 		//uncomment to run as a cucumber feature file
-		//propFileName="C:/_/testleft/src/test/resources/config/config.properties";
+		propFileName="C:/_/testleft/src/test/resources/config/config.properties";
 
 		
 		try {

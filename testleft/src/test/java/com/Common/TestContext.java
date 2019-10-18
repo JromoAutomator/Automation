@@ -1,9 +1,11 @@
 package com.Common;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -17,15 +19,20 @@ import cucumber.api.java.Before;
 public class TestContext extends webElements_Keywords{
 	
 	private WebDriver intDriver;
-	public HipTest hipTest= new HipTest();
 	public LoginPage SiteLinkMyHub_LoginPage;
 	public HomePage SiteLinkMyHub_HomePage;
 	public projectProperties projectProp;
+	//Uncomment for Option 1
+	//public reporting Report = new reporting();
+	public reporting Report2;
+	public HipTest hipTest= new HipTest();
 	Scenario scenario;
 
 	@Before
 	public void before(Scenario scenario) {
 	    this.scenario = scenario;
+	  //Uncomment for Option 1
+	    //Report.scenarioName=scenario.getName();
 	    hipTest.sthipTestCaseID=getHipTestCaseID();
 	    hipTest.addHipTestCaseToRun(hipTest.sthipTestCaseID);
 	    System.out.println("***********Thread "+Thread.currentThread().getId()+" running tets case id = "+ hipTest.sthipTestCaseID+ " *********************");
@@ -40,9 +47,20 @@ public class TestContext extends webElements_Keywords{
 		System.setProperty(projectProp.setProperty,projectProp.driverPath);
 		intDriver = getBrowserDriver();
 		intDriver.get(projectProp.myHubURL);
+		
 
+		//Uncomment for Option 1
+		/*SiteLinkMyHub_LoginPage = new LoginPage(intDriver,Report);
+		SiteLinkMyHub_HomePage = new HomePage(intDriver,Report);*/
+		
 		SiteLinkMyHub_LoginPage = new LoginPage(intDriver);
 		SiteLinkMyHub_HomePage = new HomePage(intDriver);
+		
+		
+		Report2=SiteLinkMyHub_LoginPage.Report;
+		Report2.scenarioName=this.scenario.getName();
+		Report2.executionReport("Passed", "Navigated to " + projectProp.myHubURL);
+		hipTest.internalReport=Report2;
 		
 		return intDriver;
 	}
