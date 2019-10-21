@@ -2,11 +2,12 @@ package com.Common;
 
 public class reporting {
 	
+	
 	public String logLevel="all";
 	public String testCaseMessage="";
 	public String scenarioName="";
 	public int testCaseStatus=1;
-
+	
 	public void executionReport(String status, String message) {
 		
 		if (!status.toLowerCase().equals("failed")) {

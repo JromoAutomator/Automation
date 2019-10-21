@@ -1,40 +1,19 @@
 package com.storable.framework;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import com.Common.TestContext;
-import com.Common.projectProperties;
-import com.Common.reporting;
-
-import org.openqa.selenium.chrome.*;
-
-import java.lang.reflect.Field;
-import java.util.concurrent.*;;
+import com.Common.reporting;;
 
 public abstract class webElements_Keywords implements webObjects{
 	public reporting Report = new reporting();
 	
 	//Button
-	public void button_Click(WebElement seleniumElement, String ScreenObject) {
-		seleniumElement.click();
-		Report.executionReport("passed", ScreenObject);
-	}
-	
 	public void button_Click(WebElement seleniumElement) {
 		seleniumElement.click();
 		Report.executionReport("passed", "button click");
-	}
-	
-	//TextBox
-	public void textBox_EnterText(WebElement seleniumElement,String strText,String ScreenObject) {
-		seleniumElement.click();
-		seleniumElement.clear();
-		seleniumElement.sendKeys(strText);
-		Report.executionReport("passed", ScreenObject);
 	}
 	
 	//TextBox

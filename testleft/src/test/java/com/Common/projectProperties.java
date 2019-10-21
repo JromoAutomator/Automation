@@ -93,25 +93,6 @@ public class projectProperties {
 		
 	}
 	
-	public void setProp(String Key, String Value) {
-		Properties prop = new Properties();
-		propFileName = System.getProperty("system.config.file");
-		//uncomment to run as a cucumber feature file
-		propFileName="C:/_/testleft/src/test/resources/config/config.properties";
-
-		
-		try {
-			InputStream inputStream = new FileInputStream(propFileName);
-			if (inputStream != null) {
-				prop.load(inputStream);
-			} else {
-				throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		prop.setProperty(Key, Value);
-	}
+	
 
 }

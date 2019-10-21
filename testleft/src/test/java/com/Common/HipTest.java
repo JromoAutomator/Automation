@@ -23,14 +23,10 @@ public class HipTest {
 	public boolean blnhipTestlog=false;
 
 	public HipTest(reporting outReport) {
-		//Uncomment for Option 1
-		//this.internalReport=outReport;
 		projectProp = new projectProperties();
 	}
 	
 	public HipTest() {
-		//Uncomment for Option 1
-		//this.internalReport=outReport;
 		projectProp = new projectProperties();
 	}
 	
