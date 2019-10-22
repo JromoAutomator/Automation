@@ -1,19 +1,25 @@
 package com.storable.framework;
 
+import java.util.HashMap;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import com.Common.reporting;;
+import com.Common.reporting;
+
+import POM.SiteLinkMyHub.LoginPage;;
 
 public abstract class webElements_Keywords implements webObjects{
 	public reporting Report = new reporting();
+	public static HashMap<String, String > myElements = new HashMap<String, String >();
 	
 	//Button
 	public void button_Click(WebElement seleniumElement) {
+		String objName=getElementName(seleniumElement);
 		seleniumElement.click();
-		Report.executionReport("passed", "button click");
+		Report.executionReport("passed", objName+" was clicked");
 	}
 	
 	//TextBox
@@ -21,7 +27,8 @@ public abstract class webElements_Keywords implements webObjects{
 		seleniumElement.click();
 		seleniumElement.clear();
 		seleniumElement.sendKeys(strText);
-		Report.executionReport("passed", "Test edit enter text : " + strText);
+		String[] objDetails = getElementName(seleniumElement).split(":");
+		Report.executionReport("passed", objDetails[0]+":"+ strText+ " was entered into "+objDetails[1]);
 	}
 	
 	
@@ -52,5 +59,9 @@ public abstract class webElements_Keywords implements webObjects{
 		actions.perform();
 	}
 	
+	public String getElementName(Object objectName) {
+		String strObjName = myElements.get(objectName.toString());
+		return strObjName;
+	}
 
 }
