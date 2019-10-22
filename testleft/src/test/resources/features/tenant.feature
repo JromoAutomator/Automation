@@ -32,3 +32,7 @@ Scenario: Login 4
 	Given user is on sitelink login page
 	When user enters login info and presses submit
 	Then success message is displayed
+	Given user navigates to the Tenants page
+	When User expands the tab and clicks Add 
+	And User enters tenant details
+	Then Tenant is added to the Tenant grid

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.pagefactory.FieldDecorator;
 public class myPageFactory extends PageFactory{
 	
 	private static HashMap<String, String > myElements = new HashMap<String, String >();
-
+	private static String objID;
 
 	public static void initElements(ElementLocatorFactory factory, Object page) {
 		final ElementLocatorFactory factoryRef = factory;
@@ -33,18 +33,27 @@ public class myPageFactory extends PageFactory{
 	}
 	
 	private static void proxyFields(FieldDecorator decorator, Object page, Class<?> proxyIn) {
+		String objectID;
 		String[] ArrScreenName = proxyIn.toString().split(" ");
 		String[] strScreenName = ArrScreenName[1].split("\\.");
-		System.out.println();
 		String ScreenName = strScreenName[strScreenName.length-1];
 	    Field[] fields = proxyIn.getDeclaredFields();
 	    for (Field field : fields) {
 	      Object value = decorator.decorate(page.getClass().getClassLoader(), field);
 	      if (value != null) {
 	        try {
-	          myElements.put(value.toString(), ScreenName+":"+field.getName());
 	          field.setAccessible(true);
 	          field.set(page, value);
+	          objID=value.toString();
+	          if(objID.contains("Proxy element")) {
+	  			String[] st1= objID.split("'By.");
+	  			objectID=st1[st1.length-1].trim().replace("]'", "]");
+	  		  }else {
+	  			String[] st1= objID.split("->");
+	  			objectID=st1[st1.length-1].trim().replace("]", "");
+	  		  }
+	          
+	          myElements.put(objectID, ScreenName+":"+field.getName());
 	        } catch (IllegalAccessException e) {
 	          throw new RuntimeException(e);
 	        }

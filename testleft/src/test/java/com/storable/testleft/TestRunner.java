@@ -11,7 +11,9 @@ import org.testng.annotations.DataProvider;
         features = "src/test/resources/features",
         glue = {"stepdefs","com.Common"},
         //tags = {"~@ignore"}
-        tags = {"@Web"}
+        tags = {"@HTC-3668455"}
+        		
+        //tags = {"@Web"}
         )
 
 public class TestRunner extends AbstractTestNGCucumberTests{

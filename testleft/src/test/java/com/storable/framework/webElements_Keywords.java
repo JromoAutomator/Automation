@@ -1,5 +1,6 @@
 package com.storable.framework;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.openqa.selenium.Keys;
@@ -9,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import com.Common.reporting;
 
-import POM.SiteLinkMyHub.LoginPage;;
+import io.cucumber.datatable.dependency.com.fasterxml.jackson.databind.util.TypeKey;;
 
 public abstract class webElements_Keywords implements webObjects{
 	public reporting Report = new reporting();
@@ -60,7 +61,16 @@ public abstract class webElements_Keywords implements webObjects{
 	}
 	
 	public String getElementName(Object objectName) {
-		String strObjName = myElements.get(objectName.toString());
+		String ObjectID;
+		if(objectName.toString().contains("Proxy element")) {
+			String[] st1= objectName.toString().split("'By.");
+			ObjectID= st1[st1.length-1].trim().replace("]'", "]");
+		}else {
+			String[] st1= objectName.toString().split("->");
+			ObjectID=st1[st1.length-1].trim().replaceFirst("]", "");
+		}
+		
+		String strObjName = myElements.get(ObjectID);
 		return strObjName;
 	}
 

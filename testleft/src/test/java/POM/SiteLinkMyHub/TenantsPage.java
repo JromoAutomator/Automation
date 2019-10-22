@@ -1,10 +1,14 @@
 package POM.SiteLinkMyHub;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+
+import com.Common.myPageFactory;
 import com.storable.framework.webElements_Keywords;
 
 public class TenantsPage extends webElements_Keywords{
@@ -37,7 +41,9 @@ public class TenantsPage extends webElements_Keywords{
     public WebElement spnShowAllTenants;
 	
 	public TenantsPage(WebDriver intWebDriver) {
-		PageFactory.initElements(new AjaxElementLocatorFactory(intWebDriver,100), this);
+		intWebDriver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		myElements = myPageFactory.$initElements(new AjaxElementLocatorFactory(intWebDriver,0), this);
+		PageFactory.initElements(new AjaxElementLocatorFactory(intWebDriver,10), this);
 	}
 	
 }
