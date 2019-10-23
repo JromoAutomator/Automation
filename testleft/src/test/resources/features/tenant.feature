@@ -22,7 +22,7 @@ Feature: Login
   
   
 @Web @HTC-3668454 @RegressionTest
-  Scenario: Login 3
+  Scenario: Login and navigate to Tenants page
 	Given user is on sitelink login page
 	When user enters login info and presses submit
 	Then success message is displayed
@@ -31,12 +31,12 @@ Feature: Login
 	And User enters tenant details
 	Then Tenant is added to the Tenant grid
 	
-@Web @HTC-3668455 @SmokeTest
-Scenario: Login 4
-	Given user is on sitelink login page
-	When user enters login info and presses submit
-	Then success message is displayed
-	Given user navigates to the Tenants page
-	When User expands the tab and clicks Add 
-	And User enters tenant details
-	Then Tenant is added to the Tenant grid
+#@Web @HTC-3668455 @SmokeTest
+#Scenario: Login 4
+#	Given user is on sitelink login page
+#	When user enters login info and presses submit
+#	Then success message is displayed
+#	Given user navigates to the Tenants page
+#	When User expands the tab and clicks Add 
+#	And User enters tenant details
+#	Then Tenant is added to the Tenant grid

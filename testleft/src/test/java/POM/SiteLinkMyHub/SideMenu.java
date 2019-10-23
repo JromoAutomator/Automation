@@ -40,6 +40,7 @@ public class SideMenu extends webElements_Keywords {
 	
 	public void navigateMenuClick(String path) throws InterruptedException {
 		WebElement thisElement = intdriver.findElement(By.xpath("//div[contains(@class,'menu-content')]//*[text()='" + path + "']"));
+		myElements.put("xpath: //div[contains(@class,'menu-content')]//*[text()='"+path+"']","SideMenu:"+path);
 		button_Click(thisElement);
 	}
 	

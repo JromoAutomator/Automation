@@ -99,6 +99,10 @@ public abstract class webElements_Keywords implements webObjects{
 		
 		//System.out.println(objectSubID);
 		String strObjName = myElements.get(objectSubID);
+		
+		if(strObjName==null) {
+			strObjName=objectSubID;
+		}
 		return strObjName;
 	}
 	
