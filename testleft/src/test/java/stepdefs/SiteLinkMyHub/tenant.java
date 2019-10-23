@@ -1,6 +1,5 @@
 package stepdefs.SiteLinkMyHub;
 
-import com.Common.Common;
 import com.Common.HipTest;
 import com.Common.TestContext;
 import POM.SiteLinkMyHub.HomePage;
