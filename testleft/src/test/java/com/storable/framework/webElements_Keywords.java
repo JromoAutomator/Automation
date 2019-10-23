@@ -1,24 +1,26 @@
 package com.storable.framework;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.Common.reporting;
-
-import io.cucumber.datatable.dependency.com.fasterxml.jackson.databind.util.TypeKey;;
+import com.Common.Common;
+import com.Common.reporting;;
 
 public abstract class webElements_Keywords implements webObjects{
 	public reporting Report = new reporting();
 	public static HashMap<String, String > myElements = new HashMap<String, String >();
+	public WebDriver intDriver=Common.intDriver;
 	
 	//Button
 	public void button_Click(WebElement seleniumElement) {
 		String objName=getElementName(seleniumElement);
+		waitforElementtobeVisible(seleniumElement);
 		seleniumElement.click();
 		Report.executionReport("passed", objName+" was clicked");
 	}
@@ -39,8 +41,12 @@ public abstract class webElements_Keywords implements webObjects{
 	
 	//Object
 	public boolean element_isVisible(WebElement seleniumElement) {
+		boolean blnvisible=false;
+		String objName=getElementName(seleniumElement);
 		try {
-		return seleniumElement.isDisplayed();
+			blnvisible=seleniumElement.isDisplayed();
+			Report.executionReport("INFO", objName+" is visible =" + blnvisible);
+		return blnvisible;
 		}catch(Exception e) {
 			return false;
 		}
@@ -61,17 +67,45 @@ public abstract class webElements_Keywords implements webObjects{
 	}
 	
 	public String getElementName(Object objectName) {
-		String ObjectID;
+		String ObjectID, objectSubID = null,strlastCharacter;
 		if(objectName.toString().contains("Proxy element")) {
 			String[] st1= objectName.toString().split("'By.");
-			ObjectID= st1[st1.length-1].trim().replace("]'", "]");
+			ObjectID= st1[st1.length-1].trim();
+			if(!ObjectID.contains("xpath")) {
+				objectSubID=ObjectID.substring(0, ObjectID.length()-1);
+			}else {
+				strlastCharacter=""+ObjectID.charAt(ObjectID.length()-2);
+				if(strlastCharacter.equals("]")) {
+					objectSubID=ObjectID.substring(0, ObjectID.length()-1);
+				}else {
+					objectSubID=ObjectID;
+				}
+			}
 		}else {
 			String[] st1= objectName.toString().split("->");
-			ObjectID=st1[st1.length-1].trim().replaceFirst("]", "");
+			ObjectID=st1[st1.length-1].trim();
+			if(!ObjectID.contains("xpath")) {
+				objectSubID=ObjectID.substring(0, ObjectID.length()-1);
+			}else {
+				strlastCharacter=""+ObjectID.charAt(ObjectID.length()-2);
+				if(strlastCharacter.equals("]")) {
+					objectSubID=ObjectID.substring(0, ObjectID.length()-1);
+				}else {
+					objectSubID=ObjectID;
+				}
+			}
+			
 		}
 		
-		String strObjName = myElements.get(ObjectID);
+		//System.out.println(objectSubID);
+		String strObjName = myElements.get(objectSubID);
 		return strObjName;
+	}
+	
+	public void waitforElementtobeVisible(WebElement seleniumElement) {
+		try {Thread.sleep(1000);} catch (InterruptedException e) {e.printStackTrace();}
+		WebDriverWait wait2 = new WebDriverWait(intDriver, 10);
+		wait2.until(ExpectedConditions.visibilityOf(seleniumElement));
 	}
 
 }

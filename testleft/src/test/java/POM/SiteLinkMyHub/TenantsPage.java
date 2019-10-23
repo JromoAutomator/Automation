@@ -22,7 +22,7 @@ public class TenantsPage extends webElements_Keywords{
 	@FindBy(xpath="//input[@ng-required='input.tenantDefaults.Addr1']")
     public WebElement txtAddress1;
 	
-	@FindBy(xpath="//div[@class='modal-content']//button[text()='Submit']")
+	@FindBy(id="btnConfirmDlg")
     public WebElement btnSubmit;
 	
 	@FindBy(xpath="//div[@aria-hidden='false']//button[@id='btnConfirmDlg']")

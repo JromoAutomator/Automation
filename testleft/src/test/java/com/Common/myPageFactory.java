@@ -33,7 +33,7 @@ public class myPageFactory extends PageFactory{
 	}
 	
 	private static void proxyFields(FieldDecorator decorator, Object page, Class<?> proxyIn) {
-		String objectID;
+		String objectID, objectSubID=null, strlastCharacter;
 		String[] ArrScreenName = proxyIn.toString().split(" ");
 		String[] strScreenName = ArrScreenName[1].split("\\.");
 		String ScreenName = strScreenName[strScreenName.length-1];
@@ -47,13 +47,32 @@ public class myPageFactory extends PageFactory{
 	          objID=value.toString();
 	          if(objID.contains("Proxy element")) {
 	  			String[] st1= objID.split("'By.");
-	  			objectID=st1[st1.length-1].trim().replace("]'", "]");
+	  			objectID= st1[st1.length-1].trim();
+	  			if(!objectID.contains("xpath")) {
+	  				objectSubID=objectID.substring(0, objectID.length()-1);
+				}else {
+					strlastCharacter=""+objectID.charAt(objectID.length()-1);
+					if(strlastCharacter.equals("'")) {
+						objectSubID=objectID.substring(0, objectID.length()-1);
+					}else {
+						objectSubID=objectID;}
+					}
 	  		  }else {
 	  			String[] st1= objID.split("->");
-	  			objectID=st1[st1.length-1].trim().replace("]", "");
+	  			objectID= st1[st1.length-1].trim();
+	  			if(!objectID.contains("xpath")) {
+	  				objectSubID=objectID.substring(0, objectID.length()-1);
+				}else {
+					strlastCharacter=""+objectID.charAt(objectID.length()-1);
+					if(strlastCharacter.equals("'")) {
+						objectSubID=objectID.substring(0, objectID.length()-1);
+					}else {
+						objectSubID=objectID;}
+					}
 	  		  }
 	          
-	          myElements.put(objectID, ScreenName+":"+field.getName());
+	         // System.out.println(objectSubID);
+	          myElements.put(objectSubID, ScreenName+":"+field.getName());
 	        } catch (IllegalAccessException e) {
 	          throw new RuntimeException(e);
 	        }

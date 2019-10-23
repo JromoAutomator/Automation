@@ -9,7 +9,7 @@ import com.storable.framework.webElements_Keywords;
 public class Common extends webElements_Keywords{
 	
 	private projectProperties projectProp;
-	public WebDriver intDriver;
+	public static WebDriver intDriver;
 	public MyHubBase myHub;
 	
 	public Common() {

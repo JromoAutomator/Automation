@@ -43,7 +43,6 @@ public class tenant{
 		}else {
 			ObjCommon.BaseCommon.myHub.Report.executionReport("failed", "HomePage : something went wrong with login steps");
 		}
-		SiteLinkMyHub_HomePage.element_isVisible(SiteLinkMyHub_HomePage.lblOperations);  
 	  }
 	
 	@Given("^user navigates to the Tenants page$")
